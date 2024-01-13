@@ -13,6 +13,8 @@ func MigrateDatabase() error {
 	postgresUrl := os.Getenv("POSTGRES_URL")
 	migrationPath := os.Getenv("MIGRATION_PATH")
 
+	fmt.Println("variáveis", postgresUrl, migrationPath)
+
 	if postgresUrl == "" {
 		return fmt.Errorf("POSTGRES_URL variable is not available")
 	}
