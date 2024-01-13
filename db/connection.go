@@ -4,10 +4,10 @@ import (
 	"database/sql"
 	"fmt"
 	"os"
-	"path/filepath"
 
 	"github.com/golang-migrate/migrate"
 	"github.com/golang-migrate/migrate/database/postgres"
+	_ "github.com/golang-migrate/migrate/source/file"
 )
 
 func MigrateDatabase() error {
@@ -24,10 +24,10 @@ func MigrateDatabase() error {
 		return fmt.Errorf("MIGRATION_PATH variable is not available")
 	}
 
-	absoluteMigrationPath, err := filepath.Abs(migrationPath)
+	/* absoluteMigrationPath, err := filepath.Abs(migrationPath)
 	if err != nil {
 		return fmt.Errorf("failed to get absolute path for migration: %w", err)
-	}
+	} */
 
 	conn, err := sql.Open("postgres", os.Getenv("POSTGRES_URL"))
 	if err != nil {
@@ -41,7 +41,7 @@ func MigrateDatabase() error {
 	}
 
 	m, err := migrate.NewWithDatabaseInstance(
-		"file://"+absoluteMigrationPath,
+		"file://"+migrationPath,
 		"postgres", driver)
 	if err != nil {
 		return fmt.Errorf("failed to create migration instance: %w", err)
