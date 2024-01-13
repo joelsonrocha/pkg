@@ -33,7 +33,7 @@ func MigrateDatabase() error {
 	}
 
 	m, err := migrate.NewWithDatabaseInstance(
-		"file://"+os.Getenv("MIGRATION_PATH"),
+		"file://"+migrationPath,
 		"postgres", driver)
 	if err != nil {
 		return fmt.Errorf("failed to create migration instance: %w", err)
