@@ -1,4 +1,4 @@
-package mensageria
+package pkg
 
 import (
 	"context"
