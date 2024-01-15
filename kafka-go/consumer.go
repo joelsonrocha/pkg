@@ -1,4 +1,4 @@
-package consumer
+package kafkago
 
 import (
 	"context"
