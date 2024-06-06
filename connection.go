@@ -71,3 +71,11 @@ func OpenConnection() (*sql.DB, error) {
 
 	return conn, err
 }
+
+func CloseConnection(conn *sql.DB) error {
+	err := conn.Close()
+	if err != nil {
+		return fmt.Errorf("failed to close database connection: %w", err)
+	}
+	return nil
+}
