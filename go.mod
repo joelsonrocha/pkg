@@ -1,6 +1,6 @@
 module github.com/joelsonrocha/pkg
 
-go 1.20
+go 1.23
 
 require (
 	github.com/golang-migrate/migrate/v4 v4.17.0
